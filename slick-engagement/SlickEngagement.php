@@ -1,14 +1,17 @@
 <?php namespace Slickstream;
 /*
-Plugin Name: Slickstream Search and Engagement
-Plugin URI: https://slickstream.com/getting-started
-Author: Slickstream
-Author URI: https://slickstream.com
-Description: Use Slickstreams's cloud service and widgets to increase visitor engagement
-Text Domain: slick-engagement
-License: GPLv3 or later
-*/
-
+ * Plugin Name:       Slickstream Search and Engagement
+ * Plugin URI:        https://slickstream.com/
+ * Description:       For use with Slickstream's cloud service and widgets to increase visitor engagement
+ * Version:           2.0.1
+ * Requires at least: 5.2.0
+ * Requires PHP:      7.4.0
+ * Author:            Slickstream
+ * Author URI:        https://slickstream.com
+ * License:           GPL v3 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:       slick-engagement
+ */
 
 /**
  * Check the PHP version and give a useful error message if the user's version is less than the required version

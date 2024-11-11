@@ -11,7 +11,7 @@ require_once 'SlickEngagement_PageBootData.php';
 require_once 'SlickEngagement_Utils.php';
 
 class SlickEngagement_Plugin extends OptionsManager  {
-    private const PLUGIN_VERSION = '2.0.0';
+    private const PLUGIN_VERSION = '2.0.1';
     private const DEFAULT_SERVER_URL = 'app.slickstream.com';
     private string $scriptClass = 'slickstream-script';
     private string $serverUrlBase;

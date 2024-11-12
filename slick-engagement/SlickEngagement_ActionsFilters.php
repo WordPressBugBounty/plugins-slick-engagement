@@ -66,7 +66,7 @@ class ActionsFilters extends PluginLifecycle {
     }
 
     protected function getMainPluginFileName(): string {
-        return 'SlickEngagement.php';
+        return 'slick-engagement.php';
     }
 
     protected function installDatabaseTables(): void {}

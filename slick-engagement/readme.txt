@@ -7,7 +7,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 5.0
 Requires PHP: 7.4
 Tested up to: 6.6.2
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 
 Use Slickstream to upgrade your site search.  Get beautiful as-you-type search, relevant content recommendations, user favorites and more!
 
@@ -148,7 +148,10 @@ You can find more information about Slickstream here on Slickstream.com.
 - Updated plugin metadata to improve upgrade workflow
 - Revised to show accurate version number and update status
 
+= 2.0.2 =
+- Upgrade lifecycle bug fix
+
 == Upgrade Notice ==
 
-= 2.0.1 =
+= 2.0.2 =
 - We recommend all Slickstream sites upgrade to this latest plugin version for the best Slickstream experience. This new version includes enhancements to page load speeds, better configuration data caching, and enhanced security. NOTE: Slickstream Plugins 2.0.0+ require at leaset PHP 7.4.0.

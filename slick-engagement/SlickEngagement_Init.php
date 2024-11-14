@@ -1,11 +1,11 @@
 <?php 
 declare(strict_types=1);
-namespace Slickstream;
 
-function PluginInit(): void {
+function SlickEngagement_init(): void {
 
+    require_once 'SlickEngagement_PluginInit.php';
     require_once 'SlickEngagement_ActionsFilters.php';
-    $slickActionsFilters = new ActionsFilters();
+    $slickActionsFilters = new Slickstream\ActionsFilters();
 
     // NOTE: this file gets run each time you *activate* the plugin.
     // So in WP when you "install" the plugin, all that does it dump its files in the plugin-templates directory

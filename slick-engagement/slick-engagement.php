@@ -1,9 +1,10 @@
-<?php namespace Slickstream;
+<?php 
+namespace Slickstream;
 /*
  * Plugin Name:       Slickstream Search and Engagement
  * Plugin URI:        https://slickstream.com/
  * Description:       For use with Slickstream's cloud service and widgets to increase visitor engagement
- * Version:           2.0.2
+ * Version:           2.0.3
  * Requires at least: 5.2.0
  * Requires PHP:      7.4.0
  * Author:            Slickstream
@@ -24,7 +25,7 @@ function SlickstreamPluginInit(): void {
     if (version_compare((string) phpversion(), $minimumRequiredPhpVersion) < 0) {
         add_action('admin_notices', function() use ($minimumRequiredPhpVersion) {
             echo '<div class="updated fade">' .
-            __('Error: plugin "Slickstream Engagement" requires a newer version of PHP to be running.', 'slick-engagement') .
+            __('Error: plugin "Slickstream Engagement" requires a newer version of PHP to run properly.', 'slick-engagement') .
             '<br/>' . __('Minimum version of PHP required: ', 'slick-engagement') . '<strong>' . $minimumRequiredPhpVersion . '</strong>' .
             '<br/>' . __('Your server\'s PHP version: ', 'slick-engagement') . '<strong>' . phpversion() . '</strong>' .
             '</div>';
@@ -33,7 +34,7 @@ function SlickstreamPluginInit(): void {
     }
 
     require_once 'SlickEngagement_Init.php';
-    PluginInit();
+    \SlickEngagement_init();
 }
 
 SlickstreamPluginInit();

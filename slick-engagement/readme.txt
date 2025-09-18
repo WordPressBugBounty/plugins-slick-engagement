@@ -6,10 +6,10 @@ License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 5.0
 Requires PHP: 7.4.0
-Tested up to: 6.7.0
-Stable tag: 2.0.3
+Tested up to: 6.8.2
+Stable tag: 3.0.0
 
-Use Slickstream to upgrade your site search.  Get beautiful as-you-type search, relevant content recommendations, user favorites and more!
+Use Slickstream to upgrade your site search. Get beautiful as-you-type search, relevant content recommendations, user favorites and more!
 
 == Description ==
 
@@ -78,7 +78,7 @@ What makes Slickstream different is that we handle the hard work for you. We sit
 - Structured data search experience for ingredients or supplies
 - All search queries recorded in analytics
 
-== FAQ ==
+== FAQs ==
 
 = What is Slickstream? =
 Slickstream is a sophisticated market-leading user engagement suite designed for independent publishers. It helps you turn casual visitors into loyal readers that return again and again through intelligent as-you-type search, content recommendations, favoriting and membership capabilities, email sign-up, and other useful features. You can easily design captivating user journeys that lead visitors to exactly what they're looking for. The result is higher pageviews, time-on-page, click-throughs, and return visits. As if that isn’t enough, Slickstream’s reporting gives deep insights into its performance and how your visitors are interacting on your site, far beyond what you can see in Google Analytics.
@@ -96,14 +96,20 @@ Slickstream also offers an email sign-up feature that you can use to collect ema
 Yes we do. Our underlying recommendation technology is not English-specific, and we have already localized the Engagement Suite for German, Portuguese, Spanish, Dutch, French, Norwegian, Swedish, Croatian, Russian, Danish, Arabic, Hebrew, Japanese and more. [Reach out to us](https://www.slickstream.com/contact) and we can confirm if we support your language too.
 
 = Where can I learn more about Slickstream? =
-You can find more information about Slickstream here on Slickstream.com.
+You can find more information about Slickstream at our website: [https://slickstream.com](https://slickstream.com).
+
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/a5ba44ba-8ef4-4d10-a395-b0589af7d09e)
 
 == Installation ==
 
-1. Visit [https://slickstream.com](https://slickstream.com) and tell us about your site.
-2. Install and activate this plugin.
-3. On the settings page ("Slick" under Settings), enter the site code we give you and click Save.
-4. Check with us if you'd like any customization of your widgets
+1. Visit [https://slickstream.com](https://www.slickstream.com/support/how-to-sign-up-to-slickstream) and register your site.
+2. Install and activate this plugin via WP-Admin.
+3. On the WP-Admin Settings page, find "Slickstream Engagement" and click on that.
+4. Enter the "Site Code" we gave you when you registered into the settings form, and click the Save button.
+5. If your site has already been on-boarded and indexed, you should see Slickstream widgets on your website immediately.
+6. Contact [Support](mailto:support@slickstream.com) if you'd like any customization of Slickstream widgets or settings.
 
 == Screenshots ==
 
@@ -112,29 +118,6 @@ You can find more information about Slickstream here on Slickstream.com.
 3. Automatic categorization within the Slickstream panel. Here you can see results for "dessert" grouped by popularity, date, and a related subcategory ("baking").
 
 == Changelog ==
-
-= 1.2.5 =
-- Enhanced A/B testing
-
-= 1.3.0 =
-- Automatically reduces CLS without adjustments or setting changes from admin
-
-= 1.3.1 =
-- Security enhancements
-
-= 1.4.0 =
-- Performance improvements
-- CLS improvements
-
-= 1.4.1 =
-- Added support for custom margins for CLS
-
-= 1.4.2 =
-- Performance improvements
-
-= 1.4.3 =
-- Include options for Genesis-based container reservation
-- Additional performance enhancements
 
 = 1.4.4 =
 - Performance improvement for CLS
@@ -153,9 +136,15 @@ You can find more information about Slickstream here on Slickstream.com.
 
 = 2.0.3 =
 - Restored `SlickEngagement_init()` function
-- Tested to be comaptible up to Wordpress 6.7.0
-
-== Upgrade Notice ==
+- Tested to be compatible up to Wordpress 6.7.0
 
 = 2.0.3 =
-- We recommend all Slickstream sites upgrade to this latest plugin version for the best Slickstream experience. This new version includes enhancements to page load speeds, better configuration data caching, and enhanced security. NOTE: Slickstream Plugins 2.0.0+ require at leaset PHP 7.4.0.
+- We recommend all Slickstream sites upgrade to this latest plugin version for the best Slickstream experience. This new version includes enhancements to page load speeds, better configuration data caching, and enhanced security. NOTE: Slickstream Plugins 2.0.0+ require at least PHP 7.4.0.
+
+= 3.0.0 =
+- Tested compatibility up to WordPress 6.8.2
+- Fixed deprecated function warning for PHP 8.2.0+
+- Addressed CVE-2025-53273
+- Enhanced string escaping and input validation
+- Enhanced embed code retrieval
+- CLS improvements

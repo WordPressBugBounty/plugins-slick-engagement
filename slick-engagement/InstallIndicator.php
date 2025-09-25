@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Slickstream;
 
-require_once 'OptionsManager.php';
+require_once PLUGIN_DIR_PATH(__FILE__) . 'OptionsManager.php';
 
 class InstallIndicator extends OptionsManager
 {
@@ -26,6 +26,7 @@ class InstallIndicator extends OptionsManager
 
     /**
      * Note in DB that the plugin is installed
+     *
      * @return null
      */
     protected function markAsInstalled(): ?bool
@@ -35,6 +36,7 @@ class InstallIndicator extends OptionsManager
 
     /**
      * Note in DB that the plugin is uninstalled
+     *
      * @return bool returned form delete_option.
      * true implies the plugin was installed at the time of this call,
      * false implies it was not.
@@ -56,8 +58,9 @@ class InstallIndicator extends OptionsManager
 
     /**
      * Set a version string in the options.
-     * @param  $version string best practice: use a dot-delimited string like '1.2.3' so version strings can be easily
-     * compared using version_compare (http://php.net/manual/en/function.version-compare.php)
+     *
+     * @param $version string best practice: use a dot-delimited string like '1.2.3' so version strings can be easily
+     *                 compared using version_compare (http://php.net/manual/en/function.version-compare.php)
      */
     protected function setVersionSaved(string $version): ?bool
     {
@@ -70,13 +73,14 @@ class InstallIndicator extends OptionsManager
      */
     protected function getMainPluginFileName(): string
     {
-        return basename(dirname(__FILE__)) . 'php';
+        return basename(__DIR__) . 'php';
     }
 
     /**
      * Get a value for input key in the header section of main plugin file.
      * E.g. "Plugin Name", "Version", "Description", "Text Domain", etc.
-     * @param $key string plugin header key
+     *
+     * @param  $key string plugin header key
      * @return string | null if found, otherwise null
      */
     /**
@@ -103,6 +107,7 @@ class InstallIndicator extends OptionsManager
      * If your subclass of this class lives in a different directory,
      * override this method with the exact same code. Since __FILE__ will
      * be different, you will then get the right dir returned.
+     *
      * @return string
      */
     protected function getPluginDir(): string
@@ -114,6 +119,7 @@ class InstallIndicator extends OptionsManager
      * Version of this code.
      * Best practice: define version strings to be easily compared using version_compare()
      * NOTE: You should manually make this match the SVN tag for your main plugin file 'Version' release and 'Stable tag' in readme.txt
+     *
      * @return string
      */
     public function getVersion(): string
@@ -127,6 +133,7 @@ class InstallIndicator extends OptionsManager
      * Useful when checking for upgrades, can tell if the currently installed version is earlier than the
      * newly installed code. This case indicates that an upgrade has been installed and this is the first time it
      * has been activated, so any upgrade actions should be taken.
+     *
      * @return bool true if the version saved in the options is earlier than the version declared in getVersion().
      * true indicates that new code is installed and this is the first time it is activated, so upgrade actions
      * should be taken. Assumes that version string comparable by version_compare, examples: '1', '1.1', '1.1.1', '2.0', etc.
@@ -138,6 +145,7 @@ class InstallIndicator extends OptionsManager
 
     /**
      * Used to see if the installed code is an earlier version than the input version
+     *
      * @param  $aVersion string
      * @return bool true if the saved version is earlier (by natural order) than the input version
      */
@@ -152,6 +160,7 @@ class InstallIndicator extends OptionsManager
      * but the last version (installed) was 2.3 (for example) you could check if
      * For example, $this->isSavedVersionLessThanEqual('2.3') == true indicates that the saved version is not upgraded
      * past 2.3 yet and therefore you would perform some appropriate upgrade action.
+     *
      * @param  $aVersion string
      * @return bool true if the saved version is earlier (by natural order) than the input version
      */
@@ -184,6 +193,7 @@ class InstallIndicator extends OptionsManager
      * Record the installed version to options.
      * This helps track was version is installed so when an upgrade is installed, it should call this when finished
      * upgrading to record the new current version
+     *
      * @return void
      */
     protected function saveInstalledVersion(): void

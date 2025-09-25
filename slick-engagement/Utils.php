@@ -6,7 +6,9 @@ namespace Slickstream;
 
 class Utils
 {
-    /** @var Utils|null */
+    /**
+     * @var Utils|null
+     */
     private static ?Utils $instance = null;
 
     public function __clone()
@@ -30,9 +32,9 @@ class Utils
 
     /**
      * @param string $comment
-     * @param bool $isBrowserConsoleComment
-     * @param bool $debugOnly
-     * @param bool $isHtmlComment
+     * @param bool   $isBrowserConsoleComment
+     * @param bool   $debugOnly
+     * @param bool   $isHtmlComment
      */
     public function echoComment(
         string $comment,
@@ -75,7 +77,7 @@ class Utils
     }
 
     /**
-     * @param string $paramName
+     * @param  string $paramName
      * @return string|null
      */
     public function getQueryParamByName(string $paramName): ?string
@@ -84,9 +86,9 @@ class Utils
     }
 
     /**
-     * @param string $remoteUrl
-     * @param int $timeout
-     * @param string $type
+     * @param  string $remoteUrl
+     * @param  int    $timeout
+     * @param  string $type
      * @return mixed|null
      */
     public function fetchRemoteObject(string $remoteUrl, int $timeout = 1, string $type = 'json')
@@ -97,10 +99,13 @@ class Utils
         $headers = ['referer' => home_url()];
         $this->echoComment("Fetching from URL: $remoteUrl", true, true, false);
         $this->echoComment('Headers: ' . json_encode($headers), true, true, false);
-        $response = wp_remote_get($remoteUrl, [
+        $response = wp_remote_get(
+            $remoteUrl,
+            [
             'timeout' => $timeout,
             'headers' => $headers,
-        ]);
+            ]
+        );
         $responseCode = wp_remote_retrieve_response_code($response);
         if (is_wp_error($response) || $responseCode !== 200) {
             $errorMsg = is_wp_error($response) ? $response->get_error_message() : 'Server-side Error';
@@ -113,8 +118,8 @@ class Utils
     }
 
     /**
-     * @param string $remoteUrl
-     * @param int $timeout
+     * @param  string $remoteUrl
+     * @param  int    $timeout
      * @return object|null
      */
     public function fetchRemote(string $remoteUrl, int $timeout = 1): ?object
@@ -130,10 +135,13 @@ class Utils
 
         $this->echoComment("Fetching from URL: $remoteUrl", true, true, false);
 
-        $response = wp_remote_get($remoteUrl, [
+        $response = wp_remote_get(
+            $remoteUrl,
+            [
             'timeout' => $timeout,
             'headers' => ['referer' => home_url()],
-        ]);
+            ]
+        );
 
         $responseCode = wp_remote_retrieve_response_code($response);
 
@@ -147,32 +155,32 @@ class Utils
         }
     }
 
-    // This logic matches the logic on the client-side (v2.15.1+) to determine if the device is mobile
-    public function isMobile(): bool
+    // This logic matches the logic on the client-side (v2.15.1+) to determine if the device is a phone
+    public function isPhone(): bool
     {
         $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'UNKNOWN';
 
-        $isTablet = preg_match(
+        $isATablet = preg_match(
             '/Tablet|iPad|Playbook|Nook|webOS|Kindle|Silk|SM-T|GT-P|SCH-I800|Xoom|Transformer|Tab|Slate|Pixel C|Nexus 7|Nexus 9|Nexus 10|SHIELD Tablet|Lenovo Tab|Mi Pad|Android(?!.*Mobile)/i',
             $userAgent
         );
 
-        $isMobile = preg_match(
+        $isAPhone = preg_match(
             '/Mobi|iP(hone|od)|Android.*Mobile|Opera Mini|IEMobile|WPDesktop|BlackBerry|BB10|webOS|Fennec/i',
             $userAgent
         );
 
-        $isMobileStr = 'isMobile: ' . ($isMobile ? 'YES' : 'NO') .
-            '; isTablet: ' . ($isTablet ? 'YES' : 'NO') .
+        $isMobileStr = 'isMobile: ' . ($isAPhone ? 'YES' : 'NO') .
+            '; isTablet: ' . ($isATablet ? 'YES' : 'NO') .
             '; User Agent: ' . $userAgent;
 
         $this->echoComment($isMobileStr, true, true, false);
 
-        return $isMobile && !$isTablet;
+        return $isAPhone && !$isATablet;
     }
 
     /**
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function removeSemicolons(string $value): string

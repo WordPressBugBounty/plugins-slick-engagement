@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace Slickstream;
 
-// NOTE: All inline JS scripts embedded by the plugin need to have the string `slickstream` somewhere in them;
-// This allows the string `slickstream` to be used in WP-Rocket lazy load exclusions; ideally $scriptClass is added to each script
-
-require_once 'Widgets.php';
-require_once 'OptionsManager.php';
-require_once 'PageBootData.php';
-require_once 'Utils.php';
+require_once PLUGIN_DIR_PATH(__FILE__) . 'SlickWidgets.php';
+require_once PLUGIN_DIR_PATH(__FILE__) . 'OptionsManager.php';
+require_once PLUGIN_DIR_PATH(__FILE__) . 'PageBootData.php';
+require_once PLUGIN_DIR_PATH(__FILE__) . 'Utils.php';
 
 class SlickEngagement_Plugin extends OptionsManager
 {
-    private const PLUGIN_VERSION = '3.0.0';
+    private const PLUGIN_VERSION = '3.0.1';
     private const DEFAULT_APP_SERVER = 'app.slickstream.com';
     private const CDN_SERVER = 'c.slickstream.com';
     private string $scriptClass = 'slickstream-script';
@@ -22,8 +19,7 @@ class SlickEngagement_Plugin extends OptionsManager
     private string $siteCode;
     private Utils $utils;
     private const CLIENT_CODE_BRANCH = 'main';
-    private const CLIENT_VERSION = '2.15.1'; // Update this when the embed code, bootloader, or CLS insertion scripts change
-
+    private const CLIENT_VERSION = '2.15.3'; // Update this when the embed code, bootloader, or CLS insertion scripts change
     public function __construct()
     {
         parent::__construct();

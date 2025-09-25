@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Slickstream;
 
-require_once 'LifeCycle.php';
-require_once 'Plugin.php';
+require_once PLUGIN_DIR_PATH(__FILE__) . 'LifeCycle.php';
+require_once PLUGIN_DIR_PATH(__FILE__) . 'Plugin.php';
 
 const GENESIS_AFTER_HEADER_POSTS = 'After header on posts (for Genesis themes)';
 const GENESIS_BEFORE_CONTENT_POSTS = 'Before content on posts (for Genesis themes)';
@@ -45,7 +45,9 @@ class ActionsFilters extends PluginLifecycle
         ];
 
         if (function_exists('genesis')) {
-            $options = array_merge($options, [
+            $options = array_merge(
+                $options,
+                [
                 'InsertFilmstrip' => [
                     (string)__('Insert filmstrip', $domain),
                     'None',
@@ -58,7 +60,8 @@ class ActionsFilters extends PluginLifecycle
                     GENESIS_AFTER_CONTENT,
                     GENESIS_BEFORE_FOOTER,
                 ],
-            ]);
+                ]
+            );
         }
 
         return $options;
@@ -105,7 +108,7 @@ class ActionsFilters extends PluginLifecycle
 
     // Exclude slickstream scripts from JS delay in WP-Rocket
     /**
-     * @param array<int, string> $excludedStrings
+     * @param  array<int, string> $excludedStrings
      * @return array<int, string>
      */
     public function addWpRocketExclusions(array $excludedStrings = []): array
@@ -139,13 +142,15 @@ class ActionsFilters extends PluginLifecycle
         add_action('wp_head', [$plugin, 'addSlickPageHeader']);
         add_action('init', [$this, 'addTaxonomiesToPages']);
 
-        $this->addShortcodes([
+        $this->addShortcodes(
+            [
             'slick-film-strip' => 'getFilmStripShortcode',
             'slick-grid' => 'getSlickGridShortcode',
             'slick-story' => 'getSlickStoryShortcode',
             'slick-story-carousel' => 'getSlickStoryCarouselShortcode',
             'slick-story-explorer' => 'getSlickStoryExplorerShortcode',
-        ]);
+            ]
+        );
 
         $prefix = is_network_admin() ? 'network_admin_' : '';
         $pluginFile = plugin_basename($this->getPluginDir() . DIRECTORY_SEPARATOR . $this->getMainPluginFileName());

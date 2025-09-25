@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Slickstream;
 
-require_once 'InstallIndicator.php';
+require_once PLUGIN_DIR_PATH(__FILE__) . 'InstallIndicator.php';
 
 class PluginLifecycle extends InstallIndicator
 {
@@ -42,6 +42,7 @@ class PluginLifecycle extends InstallIndicator
 
     /**
      * Perform any version-upgrade activities prior to activation (e.g. database changes)
+     *
      * @return void
      */
     public function upgrade(): void
@@ -78,6 +79,7 @@ class PluginLifecycle extends InstallIndicator
      * Best Practice:
      * (1) Prefix all table names with $wpdb->prefix
      * (2) make table names lower case only
+     *
      * @return void
      */
     protected function installDatabaseTables(): void
@@ -86,6 +88,7 @@ class PluginLifecycle extends InstallIndicator
 
     /**
      * Drop plugin-created tables on uninstall.
+     *
      * @return void
      */
     protected function unInstallDatabaseTables(): void
@@ -94,6 +97,7 @@ class PluginLifecycle extends InstallIndicator
 
     /**
      * Override to add any additional actions to be done at install time
+     *
      * @return void
      */
     protected function otherInstall(): void
@@ -102,6 +106,7 @@ class PluginLifecycle extends InstallIndicator
 
     /**
      * Override to add any additional actions to be done at uninstall time
+     *
      * @return void
      */
     protected function otherUninstall(): void

@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
+// Note: do not rename or this function or add a namespace to this file
+//  This is needed for compatibility with other plugins that check for this function
 function SlickEngagement_init(): void
 {
-
-    require_once 'PluginInit.php';
-    require_once 'ActionsFilters.php';
-    $slickActionsFilters = new Slickstream\ActionsFilters();
+    require_once PLUGIN_DIR_PATH(__FILE__) . 'PluginInit.php';
+    require_once PLUGIN_DIR_PATH(__FILE__) . 'ActionsFilters.php';
+    $slickActionsFilters = new \Slickstream\ActionsFilters();
 
     // NOTE: this file gets run each time you *activate* the plugin.
     // So in WP when you "install" the plugin, all that does it dump its files in the plugin-templates directory
@@ -17,7 +18,6 @@ function SlickEngagement_init(): void
     if (!$slickActionsFilters->isInstalled()) {
         $slickActionsFilters->install();
     } else {
-        // Perform any version-upgrade activities prior to activation (e.g. database changes)
         $slickActionsFilters->upgrade();
     }
 
